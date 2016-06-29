@@ -184,8 +184,10 @@ function getActionInfo (interaction, pointer, event, eventTarget) {
 function prepare (interaction, { action, target, element }) {
   action = action || {};
 
+  let cursorTarget = interaction.target.options.cursorTarget || interaction.target._doc.documentElement;
+
   if (interaction.target && interaction.target.options.styleCursor) {
-    interaction.target._doc.documentElement.style.cursor = '';
+    cursorTarget.style.cursor = '';
   }
 
   interaction.target = target;
@@ -194,7 +196,7 @@ function prepare (interaction, { action, target, element }) {
 
   if (target && target.options.styleCursor) {
     const cursor = action? actions[action.name].getCursor(action) : '';
-    interaction.target._doc.documentElement.style.cursor = cursor;
+    cursorTarget.style.cursor = cursor;
   }
 
   signals.fire('prepared', { interaction: interaction });
@@ -340,9 +342,10 @@ Interactable.prototype.allowFrom = function (newValue) {
 
 Interaction.signals.on('stop', function ({ interaction }) {
   const target = interaction.target;
+  let cursorTarget = target.options.cursorTarget || target._doc.documentElement;
 
   if (target && target.options.styleCursor) {
-    target._doc.documentElement.style.cursor = '';
+    cursorTarget.style.cursor = '';
   }
 });
 
