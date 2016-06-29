@@ -2243,6 +2243,11 @@ var resize = {
         resizeEdges.left = resizeEdges.left && !resizeEdges.right;
         resizeEdges.top = resizeEdges.top && !resizeEdges.bottom;
 
+        if (resizeEdges.left || resizeEdges.right) {
+          resizeEdges.top = false;
+          resizeEdges.bottom = false;
+        }
+
         if (resizeEdges.left || resizeEdges.right || resizeEdges.top || resizeEdges.bottom) {
           return {
             name: 'resize',
