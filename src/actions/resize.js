@@ -22,6 +22,8 @@ const resize = {
     preserveAspectRatio: false,
     axis: 'xy',
 
+    singleDimention: false,
+
     // use default margin
     margin: NaN,
 
@@ -63,7 +65,7 @@ const resize = {
         resizeEdges.left = resizeEdges.left && !resizeEdges.right;
         resizeEdges.top  = resizeEdges.top  && !resizeEdges.bottom;
 
-        if (resizeEdges.left || resizeEdges.right){
+        if (resizeOptions.singleDimention && (resizeEdges.left || resizeEdges.right)){
           resizeEdges.top = false;
           resizeEdges.bottom = false;
         }
