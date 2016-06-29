@@ -184,7 +184,7 @@ function getActionInfo (interaction, pointer, event, eventTarget) {
 function prepare (interaction, { action, target, element }) {
   action = action || {};
 
-  let cursorTarget = interaction.target.options.cursorTarget || interaction.target._doc.documentElement;
+  const cursorTarget = interaction.target.options.cursorTarget || interaction.target._doc.documentElement;
 
   if (interaction.target && interaction.target.options.styleCursor) {
     cursorTarget.style.cursor = '';
@@ -342,7 +342,7 @@ Interactable.prototype.allowFrom = function (newValue) {
 
 Interaction.signals.on('stop', function ({ interaction }) {
   const target = interaction.target;
-  let cursorTarget = target.options.cursorTarget || target._doc.documentElement;
+  const cursorTarget = target.options.cursorTarget || target._doc.documentElement;
 
   if (target && target.options.styleCursor) {
     cursorTarget.style.cursor = '';
