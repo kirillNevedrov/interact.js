@@ -3142,9 +3142,8 @@ function prepare(interaction, _ref4) {
 
   action = action || {};
 
-  var cursorTarget = interaction.target.options.cursorTarget || interaction.target._doc.documentElement;
-
   if (interaction.target && interaction.target.options.styleCursor) {
+    var cursorTarget = interaction.target.options.cursorTarget || interaction.target._doc.documentElement;
     cursorTarget.style.cursor = '';
   }
 
@@ -3154,6 +3153,7 @@ function prepare(interaction, _ref4) {
 
   if (target && target.options.styleCursor) {
     var cursor = action ? actions[action.name].getCursor(action) : '';
+    var cursorTarget = interaction.target.options.cursorTarget || interaction.target._doc.documentElement;
     cursorTarget.style.cursor = cursor;
   }
 
@@ -3306,9 +3306,9 @@ Interaction.signals.on('stop', function (_ref5) {
   var interaction = _ref5.interaction;
 
   var target = interaction.target;
-  var cursorTarget = target.options.cursorTarget || target._doc.documentElement;
 
   if (target && target.options.styleCursor) {
+    var cursorTarget = target.options.cursorTarget || target._doc.documentElement;
     cursorTarget.style.cursor = '';
   }
 });
