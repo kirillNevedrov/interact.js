@@ -2369,6 +2369,7 @@ Interaction.signals.on('action-start', function (_ref) {
 
     resizeEvent.rect = interaction.resizeRects.restricted;
     resizeEvent.deltaRect = interaction.resizeRects.delta;
+    resizeEvent.edges = interaction.prepared.edges;
   }
 
   interaction.target.fire(resizeEvent);
