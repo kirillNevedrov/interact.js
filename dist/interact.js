@@ -475,6 +475,11 @@ var Interactable = (function () {
     return this.options.deltaSource;
   };
 
+  Interactable.prototype.cursorTarget = function cursorTarget(newValue) {
+    this.options.cursorTarget = newValue;
+    return this;
+  };
+
   /*\
    * Interactable.context
    [ method ]
@@ -771,7 +776,7 @@ Interactable.eventTypes = scope.eventTypes = [];
 
 Interactable.signals = signals;
 
-Interactable.settingsMethods = ['deltaSource', 'origin', 'preventDefault', 'rectChecker'];
+Interactable.settingsMethods = ['deltaSource', 'origin', 'preventDefault', 'rectChecker', 'cursorTarget'];
 
 module.exports = Interactable;
 
