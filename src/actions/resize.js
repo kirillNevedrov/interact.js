@@ -295,6 +295,8 @@ Interaction.signals.on('action-end', function ({ interaction, event }) {
 
   const resizeEvent = new InteractEvent(interaction, event, 'resize', 'end', interaction.element);
 
+  resizeEvent.edges = interaction.prepared.edges;
+
   interaction.target.fire(resizeEvent);
   interaction.prevEvent = resizeEvent;
 });
