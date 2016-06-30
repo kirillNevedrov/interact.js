@@ -2207,6 +2207,7 @@ var resize = {
     axis: 'xy',
 
     singleDimention: false,
+    multiDimension: false,
 
     // use default margin
     margin: NaN,
@@ -2245,9 +2246,20 @@ var resize = {
         resizeEdges.left = resizeEdges.left && !resizeEdges.right;
         resizeEdges.top = resizeEdges.top && !resizeEdges.bottom;
 
-        if (resizeOptions.singleDimention && (resizeEdges.left || resizeEdges.right)) {
-          resizeEdges.top = false;
-          resizeEdges.bottom = false;
+        if (resizeOptions.singleDimention) {
+          if (resizeEdges.left || resizeEdges.right) {
+            resizeEdges.top = false;
+            resizeEdges.bottom = false;
+          }
+        }
+
+        if (resizeOptions.multiDimension) {
+          if (!resizeEdges.left && !resizeEdges.right || !resizeEdges.top && !resizeEdges.bottom) {
+            resizeEdges.top = false;
+            resizeEdges.bottom = false;
+            resizeEdges.left = false;
+            resizeEdges.right = false;
+          }
         }
 
         if (resizeEdges.left || resizeEdges.right || resizeEdges.top || resizeEdges.bottom) {
